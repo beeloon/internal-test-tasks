@@ -1,0 +1,11 @@
+{
+  "name": "fetch-files-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fileSync.js",
+  "scripts": {
+    "start": "node fileSync.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
