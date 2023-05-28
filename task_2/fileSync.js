@@ -4,22 +4,11 @@ const {
   downloadFile,
   getLocalFilenames,
   getDataFromRemote,
+  createFilesMetadata,
 } = require("./utils.js");
-const path = require("path");
+const { FILES_FOLDER_PATH, REMOTE_FILE_PATH } = require("./constants.js");
 
-const FILES_FOLDER_PATH = "./files";
-const REMOTE_FILE_PATH = "./remote.json";
-
-const createFilesMetadata = (directory, files) =>
-  files.reduce(
-    (meta, file) => ({
-      ...meta,
-      [path.join(FILES_FOLDER_PATH, directory, file.folder, file.name)]: file,
-    }),
-    {}
-  );
-
-const syncFileData = async () => {
+const syncData = async () => {
   console.log("Sync data in progress (〜^∇^)〜");
 
   const localFilenames = await getLocalFilenames(FILES_FOLDER_PATH);
@@ -58,14 +47,14 @@ const watchRemoteFileChanges = async () => {
   try {
     const watcher = fs.watch(REMOTE_FILE_PATH);
 
-    for await (const _ of watcher) await syncFileData();
+    for await (const _ of watcher) await syncData();
   } catch (err) {
     console.error(err);
   }
 };
 
 const main = async () => {
-  await syncFileData();
+  await syncData();
   await watchRemoteFileChanges();
 };
 

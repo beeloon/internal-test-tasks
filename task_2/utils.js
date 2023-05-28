@@ -3,6 +3,7 @@ const path = require("path");
 const { Readable } = require("stream");
 const { createWriteStream } = require("fs");
 const { finished } = require("stream/promises");
+const { FILES_FOLDER_PATH } = require("./constants.js");
 
 const isDirectoryExists = async (directory) => {
   try {
@@ -57,7 +58,7 @@ const deleteFile = async (filePath) => {
 
 const getLocalFilenames = async (folderPath) => {
   await createDirectoryIfNotExists(folderPath);
-  
+
   const filenames = [];
 
   const traverseDirectory = async (directory) => {
@@ -89,9 +90,19 @@ const getDataFromRemote = async (pathToRemoteFile) => {
   return remoteJSON["folders"];
 };
 
+const createFilesMetadata = (directory, files) =>
+  files.reduce(
+    (meta, file) => ({
+      ...meta,
+      [path.join(FILES_FOLDER_PATH, directory, file.folder, file.name)]: file,
+    }),
+    {}
+  );
+
 module.exports = {
   downloadFile,
   deleteFile,
   getLocalFilenames,
   getDataFromRemote,
+  createFilesMetadata,
 };
