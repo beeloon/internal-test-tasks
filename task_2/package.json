@@ -1,7 +1,7 @@
 {
   "name": "fetch-files-task",
   "version": "1.0.0",
-  "description": "",
+  "description": "Run file synchronization: ```bash npm run start ```",
   "main": "fileSync.js",
   "scripts": {
     "start": "node fileSync.js"

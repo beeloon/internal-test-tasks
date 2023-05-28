@@ -1,4 +1,4 @@
-Run file synchronization:
+Run electon app:
 ```bash
 npm run start
 ```
