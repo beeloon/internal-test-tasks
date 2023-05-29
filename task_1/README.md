@@ -1,4 +1,4 @@
-# Electron Wrapper Task
+# Youtube Music Wrapper App Task
 ### Run electon app:
 ```bash
 npm run start
