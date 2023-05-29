@@ -1,14 +1,30 @@
 {
-  "name": "electron-yt",
+  "name": "electron-yt-wrapper",
+  "productName": "electron-yt-wrapper",
   "version": "1.0.0",
-  "description": "Run electon app: ```bash npm run start ```",
-  "main": "main.js",
+  "description": "My Electron application description",
+  "main": "src/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "make:win32": "electron-forge make --platform=win32",
+    "make:darwin": "electron-forge make --platform=darwin",
+    "make:linux": "electron-forge make --platform=linux",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
   "devDependencies": {
-    "electron": "^24.4.0"
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "electron": "24.4.0"
   }
 }
