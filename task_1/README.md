@@ -1,12 +1,13 @@
-Run electon app:
+# Electron Wrapper Task
+### Run electon app:
 ```bash
 npm run start
 ```
 
-Requirments:
+### Requirments:
 - Node.JS version v.18.15.0
 
-You can forge an app with these commands, depends on platform that you need:
+### Depends on platform that you need, you can forge an app with these commands:
 ``` bash
 npm run make:win32 
 npm run make:darwin 

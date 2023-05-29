@@ -1,7 +1,9 @@
-Run file synchronization:
+# File Synchronization Task
+
+### Run file synchronization:
 ```bash
 npm run start
 ```
 
-Requirments:
+### Requirments:
 - Node.JS version v.18.15.0
