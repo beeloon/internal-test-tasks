@@ -7,6 +7,11 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+const restartApp = () => {
+  app.relaunch();
+  app.exit();
+}
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     title: "Youtube Music Wrapper",
@@ -16,16 +21,14 @@ const createWindow = () => {
 
   mainWindow.loadURL('https://music.youtube.com');
 
-  mainWindow.webContents.on('console-message', (event, level, message) => console.log(message));
+  mainWindow.webContents.on('console-message', (event, level, message) => {
+    console.log(message)
+  });
 
-  mainWindow.webContents.on('render-process-gone', restartApp);
-
+  mainWindow.webContents.on('render-process-gone', (event, details) => {
+    restartApp();
+  });
 };
-
-const restartApp = () => {
-  app.relaunch();
-  app.exit();
-}
 
 process.on('uncaughtException', (err) => {
   console.error(err);
